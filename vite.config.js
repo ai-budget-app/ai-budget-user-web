@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
+import path from 'node:path'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,8 +12,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     resolve: {
       alias: {
-        "@": resolve(__dirname, "src"),
-        "@components": resolve(__dirname, "src/components"), 
+        '@': path.resolve(__dirname, './src'),
       },
     },
     esbuild: {
