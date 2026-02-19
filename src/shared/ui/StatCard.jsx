@@ -1,18 +1,36 @@
-import { cn } from '@/lib/utils';
+import styled from 'styled-components';
 
-export const StatCard = ({ label, value, change, positive, className }) => {
+const StatCardContainer = styled.div`
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+`;
+
+const StatLabel = styled.p`
+  font-size: 0.875rem;
+  color: #888;
+  margin-bottom: 4px;
+`;
+
+const StatValue = styled.p`
+  font-size: 1.5rem;
+  font-weight: 700;
+`;
+
+const StatChange = styled.p`
+  font-size: 0.75rem;
+  margin-top: 4px;
+  color: ${({ positive }) => (positive ? '#22c55e' : '#ef4444')};
+`;
+
+export const StatCard = ({ label, value, change, positive }) => {
   return (
-    <div
-      className={cn(
-        'bg-background/80 backdrop-blur-sm rounded-xl p-4 border border-border',
-        className
-      )}
-    >
-      <p className="text-sm text-muted-foreground mb-1">{label}</p>
-      <p className="text-2xl font-bold">{value}</p>
-      {change && (
-        <p className={cn('text-xs mt-1', positive ? 'text-green-500' : 'text-red-500')}>{change}</p>
-      )}
-    </div>
+    <StatCardContainer>
+      <StatLabel>{label}</StatLabel>
+      <StatValue>{value}</StatValue>
+      {change && <StatChange positive={positive}>{change}</StatChange>}
+    </StatCardContainer>
   );
 };

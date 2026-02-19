@@ -1,20 +1,49 @@
-import { cn } from '@/lib/utils';
+import styled from 'styled-components';
 
-export const Section = ({ id, className, children, ...props }) => {
+const SectionContainer = styled.section`
+  padding: 80px 24px;
+`;
+
+const SectionInner = styled.div`
+  max-width: 72rem;
+  margin: 0 auto;
+`;
+
+const SectionHeaderContainer = styled.div`
+  text-align: center;
+  margin-bottom: 64px;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 2.25rem;
+  }
+`;
+
+const SectionDescription = styled.p`
+  color: #888;
+  font-size: 1.125rem;
+  max-width: 42rem;
+  margin: 0 auto;
+`;
+
+export const Section = ({ id, children, ...props }) => {
   return (
-    <section id={id} className={cn('py-20 px-6', className)} {...props}>
-      <div className="max-w-6xl mx-auto">{children}</div>
-    </section>
+    <SectionContainer id={id} {...props}>
+      <SectionInner>{children}</SectionInner>
+    </SectionContainer>
   );
 };
 
-export const SectionHeader = ({ title, description, className }) => {
+export const SectionHeader = ({ title, description }) => {
   return (
-    <div className={cn('text-center mb-16', className)}>
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
-      {description && (
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{description}</p>
-      )}
-    </div>
+    <SectionHeaderContainer>
+      <SectionTitle>{title}</SectionTitle>
+      {description && <SectionDescription>{description}</SectionDescription>}
+    </SectionHeaderContainer>
   );
 };
