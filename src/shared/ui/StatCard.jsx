@@ -1,18 +1,37 @@
-import { cn } from '@/lib/utils';
+import styled from 'styled-components';
 
-export const StatCard = ({ label, value, change, positive, className }) => {
+const StatCardContainer = styled.div`
+  background: ${({ theme }) => theme.palette.background.paper};
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid ${({ theme }) => theme.palette.divider};
+`;
+
+const StatLabel = styled.p`
+  font-size: 0.875rem;
+  color: ${({ theme }) => theme.palette.text.secondary};
+  margin-bottom: 4px;
+`;
+
+const StatValue = styled.p`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.palette.text.primary};
+`;
+
+const StatChange = styled.p`
+  font-size: 0.75rem;
+  margin-top: 4px;
+  color: ${({ positive }) => (positive ? '#22c55e' : '#ef4444')};
+`;
+
+export const StatCard = ({ label, value, change, positive }) => {
   return (
-    <div
-      className={cn(
-        'bg-background/80 backdrop-blur-sm rounded-xl p-4 border border-border',
-        className
-      )}
-    >
-      <p className="text-sm text-muted-foreground mb-1">{label}</p>
-      <p className="text-2xl font-bold">{value}</p>
-      {change && (
-        <p className={cn('text-xs mt-1', positive ? 'text-green-500' : 'text-red-500')}>{change}</p>
-      )}
-    </div>
+    <StatCardContainer>
+      <StatLabel>{label}</StatLabel>
+      <StatValue>{value}</StatValue>
+      {change && <StatChange positive={positive}>{change}</StatChange>}
+    </StatCardContainer>
   );
 };

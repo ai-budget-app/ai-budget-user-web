@@ -1,16 +1,23 @@
-import { cn } from '@/lib/utils';
+import styled from 'styled-components';
 
-export const NavLink = ({ href, className, children, ...props }) => {
+const NavLinkStyled = styled.a`
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+`;
+
+export const NavLink = ({ href, children, ...props }) => {
   return (
-    <a
-      href={href}
-      className={cn(
-        'px-4 py-2 rounded-full text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all',
-        className
-      )}
-      {...props}
-    >
+    <NavLinkStyled href={href} {...props}>
       {children}
-    </a>
+    </NavLinkStyled>
   );
 };

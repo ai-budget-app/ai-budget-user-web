@@ -1,38 +1,27 @@
-import { cn } from '@/lib/utils';
-import * as React from 'react';
+import styled from 'styled-components';
+import {
+  Card as MuiCard,
+  CardHeader as MuiCardHeader,
+  CardContent as MuiCardContent,
+} from '@mui/material';
 
-const Card = React.forwardRef(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('rounded-xl border border-border bg-card text-card-foreground shadow', className)}
-    {...props}
-  />
-));
-Card.displayName = 'Card';
+export const Card = styled(MuiCard)`
+  && {
+    border-radius: 12px;
+    border: 1px solid ${({ theme }) => theme.palette.divider};
+    background: ${({ theme }) => theme.palette.background.paper};
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+`;
 
-const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('flex flex-col space-y-1.5 p-6', className)} {...props} />
-));
-CardHeader.displayName = 'CardHeader';
+export const CardHeader = styled(MuiCardHeader)`
+  && {
+    padding: 24px 24px 0 24px;
+  }
+`;
 
-const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
-  <h3 ref={ref} className={cn('font-semibold leading-none tracking-tight', className)} {...props} />
-));
-CardTitle.displayName = 'CardTitle';
-
-const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
-  <p ref={ref} className={cn('text-sm text-muted-foreground', className)} {...props} />
-));
-CardDescription.displayName = 'CardDescription';
-
-const CardContent = React.forwardRef(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('p-6 pt-0', className)} {...props} />
-));
-CardContent.displayName = 'CardContent';
-
-const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('flex items-center p-6 pt-0', className)} {...props} />
-));
-CardFooter.displayName = 'CardFooter';
-
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
+export const CardContent = styled(MuiCardContent)`
+  && {
+    padding: 16px 24px 24px 24px;
+  }
+`;
