@@ -1,22 +1,23 @@
 import styled from 'styled-components';
 
 const StatCardContainer = styled.div`
-  background: rgba(255, 255, 255, 0.8);
+  background: ${({ theme }) => theme.palette.background.paper};
   backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 16px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
 const StatLabel = styled.p`
   font-size: 0.875rem;
-  color: #888;
+  color: ${({ theme }) => theme.palette.text.secondary};
   margin-bottom: 4px;
 `;
 
 const StatValue = styled.p`
   font-size: 1.5rem;
   font-weight: 700;
+  color: ${({ theme }) => theme.palette.text.primary};
 `;
 
 const StatChange = styled.p`

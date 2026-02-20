@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui/Button';
+import { ButtonFilled } from '@/shared/ui/Button';
 import {
   CtaSectionContainer,
   CtaInner,
@@ -14,9 +14,9 @@ export const CtaSection = () => {
         <CtaGradientBox>
           <CtaTitle>Готовы начать?</CtaTitle>
           <CtaDescription>Присоединяйтесь к тысячам пользователей</CtaDescription>
-          <Button variant="contained" size="large" sx={{ bgcolor: '#fff', color: '#2563eb', borderRadius: '999px', '&:hover': { bgcolor: '#eff6ff' } }}>
+          <ButtonFilled size="large">
             Создать аккаунт
-          </Button>
+          </ButtonFilled>
         </CtaGradientBox>
       </CtaInner>
     </CtaSectionContainer>

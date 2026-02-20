@@ -11,7 +11,7 @@ export const HeroSectionContainer = styled.section`
   isolation: isolate;
 `;
 
-export const AuroraWrapper = styled.div`
+export const SilkWrapper = styled.div`
   position: absolute;
   inset: 0;
   z-index: 0;

@@ -1,11 +1,10 @@
 import { StatCard } from '@/shared/ui/StatCard';
-import { Button } from '@/shared/ui/Button';
+import { ButtonFilled, ButtonOutlined } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/Card';
-import Aurora from '../Aurora/Aurora';
 import GradientText from '../GradientText/GradientText';
 import {
   HeroSectionContainer,
-  AuroraWrapper,
+  SilkWrapper,
   GradientOverlay,
   ContentWrapper,
   ButtonGroup,
@@ -15,13 +14,20 @@ import {
   ChartContainer,
   ChartBar,
 } from './styles';
+import Silk from '../Silk/Silk';
 
 export const HeroSection = () => {
   return (
     <HeroSectionContainer>
-      <AuroraWrapper>
-        <Aurora colorStops={['#0055ff', '#5f96dd', '#00ccff']} amplitude={0.3} blend={0.5} />
-      </AuroraWrapper>
+      <SilkWrapper>
+        <Silk
+          speed={5}
+          scale={1}
+          color="#3a88fe"
+          noiseIntensity={1.5}
+          rotation={0}
+        />
+      </SilkWrapper>
 
       <GradientOverlay />
 
@@ -38,12 +44,12 @@ export const HeroSection = () => {
         </GradientText>
 
         <ButtonGroup>
-          <Button variant="contained" color="primary" size="large">
+          <ButtonFilled size="large">
             Попробовать
-          </Button>
-          <Button variant="outlined" color="primary" size="large">
+          </ButtonFilled>
+          <ButtonOutlined size="large">
             Узнать больше
-          </Button>
+          </ButtonOutlined>
         </ButtonGroup>
 
         <DashboardPreview />

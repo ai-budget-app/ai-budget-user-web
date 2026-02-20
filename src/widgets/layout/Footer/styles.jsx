@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid ${({ theme }) => theme.palette.divider};
   padding: 24px;
 `;
 
@@ -13,5 +13,5 @@ export const FooterContent = styled.div`
 
 export const FooterText = styled.span`
   font-size: 0.875rem;
-  color: #888;
+  color: ${({ theme }) => theme.palette.text.secondary};
 `;

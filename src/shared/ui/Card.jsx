@@ -8,8 +8,8 @@ import {
 export const Card = styled(MuiCard)`
   && {
     border-radius: 12px;
-    border: 1px solid #e0e0e0;
-    background: #fff;
+    border: 1px solid ${({ theme }) => theme.palette.divider};
+    background: ${({ theme }) => theme.palette.background.paper};
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   }
 `;

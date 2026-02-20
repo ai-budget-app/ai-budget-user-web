@@ -4,13 +4,13 @@ const NavLinkStyled = styled.a`
   padding: 8px 16px;
   border-radius: 999px;
   font-size: 0.875rem;
-  color: #888;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: all 0.2s ease;
 
   &:hover {
-    color: #222;
-    background: rgba(0, 0, 0, 0.05);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
   }
 `;
 

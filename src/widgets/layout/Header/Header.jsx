@@ -1,17 +1,18 @@
-import { Toolbar, IconButton, Button, useMediaQuery } from '@mui/material';
+import { IconButton, useMediaQuery } from '@mui/material';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
 import { useTheme } from '@/shared/context/ThemeContext';
-import { NavLink } from '@/shared/ui/NavLink';
+import { ButtonOutlined } from '@/shared/ui/button';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import {
   HeaderContainer,
+  HeaderToolbar,
   Logo,
   LogoImg,
   LogoText,
-  Nav,
-  DividerStyled,
-  Actions,
+  NavCentered,
+  ActionsFull,
+  NavLinkStyled,
 } from './styles';
 
 export const Header = () => {
@@ -20,31 +21,29 @@ export const Header = () => {
   const isMdUp = useMediaQuery(muiTheme.breakpoints.up('md'));
 
   return (
-    <HeaderContainer elevation={3}>
-      <Toolbar disableGutters style={{ minHeight: 'unset', paddingLeft: 16, paddingRight: 16 }}>
+    <HeaderContainer elevation={0}>
+      <HeaderToolbar disableGutters>
         <Logo>
           <LogoImg src="/favicon-192x192.png" alt="Zenny" />
           <LogoText style={{ display: isMdUp ? 'inline' : 'none' }}>Zenny</LogoText>
         </Logo>
 
         {isMdUp && (
-          <Nav>
-            <NavLink href="#features">Возможности</NavLink>
-            <NavLink href="#about">О нас</NavLink>
-          </Nav>
+          <NavCentered>
+            <NavLinkStyled>Возможности</NavLinkStyled>
+            <NavLinkStyled>О нас</NavLinkStyled>
+          </NavCentered>
         )}
 
-        {isMdUp && <DividerStyled />}
-
-        <Actions>
-          <IconButton onClick={toggleTheme} size="large">
+        <ActionsFull>
+          <IconButton onClick={toggleTheme} size="large" sx={{ color: '#ffffff' }}>
             {isDark ? <WbSunnyIcon /> : <DarkModeIcon />}
           </IconButton>
-          <Button variant="contained" color="primary" size="small" sx={{ borderRadius: '999px' }}>
+          <ButtonOutlined size="small">
             Начать
-          </Button>
-        </Actions>
-      </Toolbar>
+          </ButtonOutlined>
+        </ActionsFull>
+      </HeaderToolbar>
     </HeaderContainer>
   );
 };

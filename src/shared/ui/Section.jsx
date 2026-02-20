@@ -18,6 +18,7 @@ const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 16px;
+  color: ${({ theme }) => theme.palette.text.primary};
 
   @media (min-width: 768px) {
     font-size: 2.25rem;
@@ -25,7 +26,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionDescription = styled.p`
-  color: #888;
+  color: ${({ theme }) => theme.palette.text.secondary};
   font-size: 1.125rem;
   max-width: 42rem;
   margin: 0 auto;
