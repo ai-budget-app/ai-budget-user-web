@@ -6,9 +6,9 @@ import { Color } from 'three';
 const hexToNormalizedRGB = hex => {
   hex = hex.replace('#', '');
   return [
-    parseInt(hex.slice(0, 2), 16) / 255,
-    parseInt(hex.slice(2, 4), 16) / 255,
-    parseInt(hex.slice(4, 6), 16) / 255
+    Number.parseInt(hex.slice(0, 2), 16) / 255,
+    Number.parseInt(hex.slice(2, 4), 16) / 255,
+    Number.parseInt(hex.slice(4, 6), 16) / 255
   ];
 };
 
