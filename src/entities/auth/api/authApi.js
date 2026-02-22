@@ -37,20 +37,20 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: ['User'],
     }),
 
-   changePassword: builder.mutation({
-  query: (body) => ({
-    url: '/auth/change-password',
-    method: 'PUT',
-    body,
-  }),
-  invalidatesTags: ['User'],
-}),
+    changePassword: builder.mutation({
+      query: (body) => ({
+        url: '/auth/change-password',
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: ['User'],
+    }),
 
     deleteAccount: builder.mutation({
       query: (body) => ({
         url: '/auth/account',
         method: 'DELETE',
-        body, 
+        body,
       }),
       invalidatesTags: ['User', 'Budget', 'Expenses'],
     }),
