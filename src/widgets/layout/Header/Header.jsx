@@ -30,8 +30,25 @@ export const Header = () => {
 
         {isMdUp && (
           <NavCentered>
-            <NavLinkStyled>Возможности</NavLinkStyled>
-            <NavLinkStyled>О нас</NavLinkStyled>
+            <NavLinkStyled
+              onClick={() =>
+                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              Возможности
+            </NavLinkStyled>
+            <NavLinkStyled
+              onClick={() =>
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              О нас
+            </NavLinkStyled>
+            <NavLinkStyled
+              onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              FAQ
+            </NavLinkStyled>
           </NavCentered>
         )}
 
@@ -39,7 +56,10 @@ export const Header = () => {
           <IconButton onClick={toggleTheme} size="large" sx={{ color: '#ffffff' }}>
             {isDark ? <WbSunnyIcon /> : <DarkModeIcon />}
           </IconButton>
-          <ButtonOutlined size="small">
+          <ButtonOutlined
+            size="small"
+            onClick={() => document.getElementById('start')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             Начать
           </ButtonOutlined>
         </ActionsFull>

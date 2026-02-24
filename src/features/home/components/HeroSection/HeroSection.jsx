@@ -20,13 +20,7 @@ export const HeroSection = () => {
   return (
     <HeroSectionContainer>
       <SilkWrapper>
-        <Silk
-          speed={5}
-          scale={1}
-          color="#3a88fe"
-          noiseIntensity={1.5}
-          rotation={0}
-        />
+        <Silk speed={5} scale={1} color="#3a88fe" noiseIntensity={1.5} rotation={0} />
       </SilkWrapper>
 
       <GradientOverlay />
@@ -44,10 +38,18 @@ export const HeroSection = () => {
         </GradientText>
 
         <ButtonGroup>
-          <ButtonFilled size="large">
+          <ButtonFilled
+            size="large"
+            onClick={() => document.getElementById('start')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             Попробовать
           </ButtonFilled>
-          <ButtonOutlined size="large">
+          <ButtonOutlined
+            size="large"
+            onClick={() =>
+              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
             Узнать больше
           </ButtonOutlined>
         </ButtonGroup>

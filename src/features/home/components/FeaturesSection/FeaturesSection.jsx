@@ -3,12 +3,7 @@ import ShowChartIcon from '@mui/icons-material/ShowChart';
 import ShieldIcon from '@mui/icons-material/Shield';
 import { Card, CardContent } from '@/shared/ui/Card';
 import { Section, SectionHeader } from '@/shared/ui/Section';
-import {
-  FeaturesGrid,
-  FeatureIconWrapper,
-  FeatureTitle,
-  FeatureDescription,
-} from './styles';
+import { FeaturesGrid, FeatureIconWrapper, FeatureTitle, FeatureDescription } from './styles';
 
 const features = [
   {

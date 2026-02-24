@@ -7,15 +7,18 @@ import { FaqContainer, FaqItem, FaqQuestion, FaqAnswer, IconWrapper } from './st
 const faqs = [
   {
     question: 'Как начать пользоваться Zenny?',
-    answer: 'Просто создайте аккаунт, добавьте свои счета и начните отслеживать расходы. Всё интуитивно понятно и займёт не более 5 минут.',
+    answer:
+      'Просто создайте аккаунт, добавьте свои счета и начните отслеживать расходы. Всё интуитивно понятно и займёт не более 5 минут.',
   },
   {
     question: 'Мои данные в безопасности?',
-    answer: 'Да, мы используем шифрование банковского уровня. Ваши данные никогда не передаются третьим лицам.',
+    answer:
+      'Да, мы используем шифрование банковского уровня. Ваши данные никогда не передаются третьим лицам.',
   },
   {
     question: 'Есть ли мобильное приложение?',
-    answer: 'Да, приложение доступно для iOS и Android. Синхронизация между устройствами происходит в реальном времени.',
+    answer:
+      'Да, приложение доступно для iOS и Android. Синхронизация между устройствами происходит в реальном времени.',
   },
   {
     question: 'Сколько стоит использование?',
@@ -39,13 +42,9 @@ export const FaqSection = () => {
           <FaqItem key={i}>
             <FaqQuestion onClick={() => toggle(i)}>
               {faq.question}
-              <IconWrapper>
-                {openIndex === i ? <RemoveIcon /> : <AddIcon />}
-              </IconWrapper>
+              <IconWrapper>{openIndex === i ? <RemoveIcon /> : <AddIcon />}</IconWrapper>
             </FaqQuestion>
-            {openIndex === i && (
-              <FaqAnswer>{faq.answer}</FaqAnswer>
-            )}
+            {openIndex === i && <FaqAnswer>{faq.answer}</FaqAnswer>}
           </FaqItem>
         ))}
       </FaqContainer>

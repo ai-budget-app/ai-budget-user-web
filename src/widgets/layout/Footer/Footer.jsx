@@ -5,9 +5,7 @@ export const Footer = () => {
   return (
     <FooterContainer>
       <FooterContent>
-        <FooterText>
-          Copyright © {year} Zenny. All rights reserved.
-        </FooterText>
+        <FooterText>Copyright © {year} Zenny. All rights reserved.</FooterText>
       </FooterContent>
     </FooterContainer>
   );

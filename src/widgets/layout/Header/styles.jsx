@@ -8,16 +8,14 @@ export const HeaderContainer = styled(AppBar)`
     left: 50%;
     transform: translateX(-50%);
     z-index: 50;
-    background: ${({ theme }) => theme.palette.mode === 'dark'
-      ? 'rgba(15, 20, 40, 0.75)'
-      : 'rgba(30, 80, 180, 0.65)'};
+    background: ${({ theme }) =>
+      theme.palette.mode === 'dark' ? 'rgba(15, 20, 40, 0.75)' : 'rgba(30, 80, 180, 0.65)'};
     border-radius: 999px;
     width: auto;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid ${({ theme }) => theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, 0.12)'
-      : 'rgba(255, 255, 255, 0.35)'};
+    border: 1px solid ${({ theme }) =>
+      theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.35)'};
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
     padding-left: 8px;
     padding-right: 8px;

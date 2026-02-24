@@ -32,7 +32,7 @@
 }
 
 .gradient-overlay::before {
-  content: '';
+  content: "";
   position: absolute;
   border-radius: inherit;
   width: calc(100% - 2px);
