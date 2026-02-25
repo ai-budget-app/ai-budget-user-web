@@ -11,6 +11,8 @@ import { ThemeContextProvider, useTheme } from '@/shared/context/ThemeContext';
 import { lightTheme, darkTheme } from '@/shared/theme/theme';
 import App from './App.jsx';
 
+import './index.css'
+
 const Root = () => {
   const { isDark } = useTheme();
   const theme = isDark ? darkTheme : lightTheme;

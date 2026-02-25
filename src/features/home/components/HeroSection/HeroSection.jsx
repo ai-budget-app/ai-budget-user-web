@@ -38,18 +38,10 @@ export const HeroSection = () => {
         </GradientText>
 
         <ButtonGroup>
-          <ButtonFilled
-            size="large"
-            onClick={() => document.getElementById('start')?.scrollIntoView({ behavior: 'smooth' })}
-          >
+          <ButtonFilled size="large" href="#start">
             Попробовать
           </ButtonFilled>
-          <ButtonOutlined
-            size="large"
-            onClick={() =>
-              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
+          <ButtonOutlined size="large" href="#features">
             Узнать больше
           </ButtonOutlined>
         </ButtonGroup>
