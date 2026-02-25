@@ -1,4 +1,4 @@
-import { baseApi } from '@/app/store/baseApi'
+import { baseApi } from '@/app/store/baseApi';
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -55,7 +55,7 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: ['User', 'Budget', 'Expenses'],
     }),
   }),
-})
+});
 
 export const {
   useRegisterMutation,
@@ -64,4 +64,4 @@ export const {
   useUpdateProfileMutation,
   useChangePasswordMutation,
   useDeleteAccountMutation,
-} = authApi
+} = authApi;

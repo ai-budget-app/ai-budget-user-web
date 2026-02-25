@@ -30,8 +30,17 @@ export const Header = () => {
 
         {isMdUp && (
           <NavCentered>
-            <NavLinkStyled>Возможности</NavLinkStyled>
-            <NavLinkStyled>О нас</NavLinkStyled>
+            <NavLinkStyled href="#features">
+              Возможности
+            </NavLinkStyled>
+
+            <NavLinkStyled href="#about">
+              О нас
+            </NavLinkStyled>
+
+            <NavLinkStyled href="#faq">
+              FAQ
+            </NavLinkStyled>
           </NavCentered>
         )}
 
@@ -39,7 +48,7 @@ export const Header = () => {
           <IconButton onClick={toggleTheme} size="large" sx={{ color: '#ffffff' }}>
             {isDark ? <WbSunnyIcon /> : <DarkModeIcon />}
           </IconButton>
-          <ButtonOutlined size="small">
+          <ButtonOutlined size="small" href="#start">
             Начать
           </ButtonOutlined>
         </ActionsFull>
