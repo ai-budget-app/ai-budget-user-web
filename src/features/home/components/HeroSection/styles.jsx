@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 export const HeroSectionContainer = styled.section`
   padding-top: 128px;
-  padding-bottom: 80px;
+  padding-bottom: 0;
   padding-left: 24px;
   padding-right: 24px;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const SilkWrapper = styled.div`
@@ -31,14 +33,20 @@ export const GradientOverlay = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 72rem;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   position: relative;
   z-index: 1;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const ButtonGroup = styled.div`
+  max-width: 72rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,8 +61,15 @@ export const ButtonGroup = styled.div`
 
 export const DashboardWrapper = styled.div`
   position: relative;
-  max-width: 56rem;
-  margin: 0 auto;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  /* Растягиваем до конца секции */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
 `;
 
 export const DashboardGlow = styled.div`
@@ -64,6 +79,7 @@ export const DashboardGlow = styled.div`
   border-radius: 24px;
   filter: blur(48px);
 `;
+
 
 export const StatsGrid = styled.div`
   display: grid;
