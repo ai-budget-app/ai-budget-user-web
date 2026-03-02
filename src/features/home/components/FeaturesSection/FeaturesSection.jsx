@@ -2,27 +2,7 @@ import { motion } from 'framer-motion'
 import { Section, SectionHeader } from '@/shared/ui/Section'
 import { MarqueeWrapper, MarqueeContent, MarqueeItem } from './styles'
 
-const items = [
-  'Учёт расходов',
-  'Автоматическая категоризация транзакций',
-  'Детальная статистика по периодам',
-  'Контроль подписок',
-  'Аналитика финансовых привычек',
-  'Наглядные графики и отчёты',
-  'Прогнозирование расходов',
-  'Безопасность данных',
-  'Банковский уровень защиты',
-  'Шифрование на всех этапах',
-  'Учёт расходов',
-  'Автоматическая категоризация транзакций',
-  'Детальная статистика по периодам',
-  'Контроль подписок',
-  'Аналитика финансовых привычек',
-  'Наглядные графики и отчёты',
-  'Прогнозирование расходов',
-  'Безопасность данных',
-  'Банковский уровень защиты',
-  'Шифрование на всех этапах',
+const BASE_ITEMS = [
   'Учёт расходов',
   'Автоматическая категоризация транзакций',
   'Детальная статистика по периодам',
@@ -36,8 +16,8 @@ const items = [
 ]
 
 const ITEM_HEIGHT = 60
-const singleListHeight = items.length * ITEM_HEIGHT
-const repeatedItems = [...items, ...items]
+const singleListHeight = BASE_ITEMS.length * ITEM_HEIGHT
+const repeatedItems = [...BASE_ITEMS, ...BASE_ITEMS]
 
 export const FeaturesSection = () => {
   return (
@@ -51,7 +31,7 @@ export const FeaturesSection = () => {
         <motion.div
           animate={{ y: [0, -singleListHeight] }}
           transition={{
-            duration: 75,
+            duration: BASE_ITEMS.length * 3,
             ease: 'linear',
             repeat: Infinity,
           }}

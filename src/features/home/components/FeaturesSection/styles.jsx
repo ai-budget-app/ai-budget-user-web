@@ -56,8 +56,8 @@ export const MarqueeItem = styled.div`
   letter-spacing: 0.5px;
   text-align: center;
 
-  color: ${({ theme }) => theme?.palette?.text?.primary ?? '#ffffff'};
-  opacity: ${({ theme }) => (theme?.palette?.mode === 'light' ? 0.6 : 0.75)};
+  color: ${({ theme }) => theme?.palette?.text?.primary};
+  opacity: 0,75;
 
   @media (max-width: 768px) {
     height: 48px;
