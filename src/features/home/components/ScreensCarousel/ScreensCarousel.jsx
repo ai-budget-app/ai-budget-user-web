@@ -1,6 +1,12 @@
-import { useRef, useEffect } from 'react';
-import { useTheme } from '@mui/material/styles';
-import './styles.css';
+import { useRef, useEffect } from 'react'
+import {
+  CarouselWrapper,
+  CarouselTrack,
+  CarouselList,
+  CarouselItem,
+  CarouselImg,
+  BottomShadow,
+} from './styles'
 
 const screenImages = [
   { src: '/screens/screen1.jpg', alt: 'Экран 1' },
@@ -12,78 +18,108 @@ const screenImages = [
   { src: '/screens/screen7.jpg', alt: 'Экран 7' },
   { src: '/screens/screen8.jpg', alt: 'Экран 8' },
   { src: '/screens/screen9.jpg', alt: 'Экран 9' },
-];
+]
 
-const SPEED = 60;
+const COUNT = screenImages.length
+const SPEED = 0.5
 
 export const ScreensCarousel = () => {
-  const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
-  const trackRef = useRef(null);
-  const rafRef = useRef(null);
-  const offsetRef = useRef(0);
-  const lastTimeRef = useRef(null);
+  const trackRef = useRef(null)
+  const rafRef = useRef(null)
+  const offsetRef = useRef(0)
+  const singleWidthRef = useRef(0)
+  const readyRef = useRef(false)
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
+    const track = trackRef.current
+    if (!track) return
 
-    const animate = (timestamp) => {
-      if (lastTimeRef.current === null) lastTimeRef.current = timestamp;
-      const delta = (timestamp - lastTimeRef.current) / 1000;
-      lastTimeRef.current = timestamp;
+    const measure = () => {
+      const items = track.querySelectorAll('li')
+      if (items.length < COUNT * 2) return
 
-      const firstList = track.querySelector('.screens-carousel__list');
-      if (firstList) {
-        const listWidth = firstList.getBoundingClientRect().width;
-        if (listWidth > 0) {
-          offsetRef.current = (offsetRef.current + SPEED * delta) % listWidth;
-          track.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
+      const firstRect = items[0].getBoundingClientRect()
+      const secondSetRect = items[COUNT].getBoundingClientRect()
+      singleWidthRef.current = secondSetRect.left - firstRect.left
+
+      readyRef.current = true
+    }
+
+    const images = track.querySelectorAll('img')
+    let loaded = 0
+    const total = images.length
+
+    const onLoad = () => {
+      loaded++
+      if (loaded >= total) measure()
+    }
+
+    images.forEach((img) => {
+      if (img.complete) {
+        loaded++
+      } else {
+        img.addEventListener('load', onLoad)
+        img.addEventListener('error', onLoad)
+      }
+    })
+
+    if (loaded >= total) measure()
+
+    const fallback = setTimeout(measure, 500)
+
+    return () => {
+      clearTimeout(fallback)
+      images.forEach((img) => {
+        img.removeEventListener('load', onLoad)
+        img.removeEventListener('error', onLoad)
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    const loop = () => {
+      if (readyRef.current && singleWidthRef.current > 0) {
+        offsetRef.current -= SPEED
+
+        if (Math.abs(offsetRef.current) >= singleWidthRef.current) {
+          offsetRef.current += singleWidthRef.current
+        }
+
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`
         }
       }
 
-      rafRef.current = requestAnimationFrame(animate);
-    };
+      rafRef.current = requestAnimationFrame(loop)
+    }
 
-    rafRef.current = requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(loop)
+
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      lastTimeRef.current = null;
-    };
-  }, []);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [])
 
-  const fadeColor = isDark ? '#121212' : '#f5f5f5';
+  const doubleImages = [...screenImages, ...screenImages]
 
   return (
-    <div
-      className="screens-carousel"
-      style={{ '--fade-color': fadeColor }}
-    >
-      <div className="screens-carousel__track" ref={trackRef}>
-        {[0, 1, 2].map((copyIndex) => (
-          <ul
-            key={copyIndex}
-            className="screens-carousel__list"
-            aria-hidden={copyIndex > 0}
-          >
-            {screenImages.map((img, i) => (
-              <li key={i} className="screens-carousel__item">
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="screens-carousel__img"
-                  draggable={false}
-                  loading="lazy"
-                />
-              </li>
-            ))}
-          </ul>
-        ))}
-      </div>
+    <CarouselWrapper>
+      <CarouselTrack ref={trackRef}>
+        <CarouselList>
+          {doubleImages.map((img, i) => (
+            <CarouselItem key={`${img.alt}-${i}`}>
+              <CarouselImg
+                src={img.src}
+                alt={img.alt}
+                draggable={false}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselList>
+      </CarouselTrack>
+      <BottomShadow />
+    </CarouselWrapper>
+  )
+}
 
-      <div className="screens-carousel__bottom-shadow" />
-    </div>
-  );
-};
-
-export default ScreensCarousel;
+export default ScreensCarousel
